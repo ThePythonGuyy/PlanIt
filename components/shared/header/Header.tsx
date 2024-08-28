@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import styles from "./header.module.scss";
 import Image from "next/image";
-// import { bungee } from "@/app/layout";
+
 import Link from "next/link";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { Button, useDisclosure } from "@chakra-ui/react";

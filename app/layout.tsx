@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins, Bungee } from "next/font/google";
+import { Poppins} from "next/font/google";
 import "./globals.scss";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Providers } from "./Providers";
@@ -11,11 +11,7 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
-export const bungee = Bungee({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-bungee",
-});
+
 
 export const metadata: Metadata = {
   title: "PlanIt",
