@@ -1,0 +1,20 @@
+@use "../../../styles/index" as *;
+
+.footerCont {
+  width: 100%;
+  @include flex-row($jc: space-between);
+  @include global-pad;
+
+@include mid-break { 
+    @include flex-col;
+    gap: 3vh;
+}
+}
+
+.head {
+  width: fit-content;
+  @include flex-row;
+  gap: 1rem;
+  @include heading2-semibold;
+  font-weight: 600 !important;
+}
