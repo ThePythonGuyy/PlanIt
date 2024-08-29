@@ -23,7 +23,7 @@
     "react": "^18",
     "react-dom": "^18",
     "sass": "^1.77.8",
-    "svix": "^1.30.0",
+    "svix": "^1.31.0",
     "uploadthing": "^6.13.2"
   },
   "devDependencies": {
