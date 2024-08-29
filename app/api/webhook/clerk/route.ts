@@ -7,7 +7,7 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the endpoint
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
-
+  console.log('create event triggered');
   if (!WEBHOOK_SECRET) {
     throw new Error(
       "Please add WEBHOOK_SECRET from Clerk Dashboard to .env or .env.local"
@@ -55,7 +55,8 @@ export async function POST(req: Request) {
   const { id } = evt.data;
   const eventType = evt.type;
 
-  if (eventType === "user.created") {
+  if (eventType === 'user.created') {
+    console.log('create event triggered');
     const { id, email_addresses, image_url, first_name, last_name, username } =
       evt.data;
 
@@ -109,3 +110,5 @@ export async function POST(req: Request) {
 
   return new Response("", { status: 200 });
 }
+
+
