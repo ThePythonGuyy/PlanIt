@@ -44,9 +44,16 @@
 .navItemsContainer {
     @include flex-row($jc: space-between);
     width: 40%;
+    >li {
+        a{
+            @include base-semibold;
+        }
+    }
 
 }
 
 .activeNavItem {
     color: $violet-1;
+    border-bottom: 2px solid $violet-1;
+
 }

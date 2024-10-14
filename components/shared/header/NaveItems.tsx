@@ -11,7 +11,7 @@ export default function NaveItems() {
       {headerLinks.map((link) => (
         <li
           key={link.label}
-          className={`${pathname == link.route ? styles.activeNavItems : ""}`}
+          className={`${pathname.split('?')[0] == link.route ? styles.activeNavItem : ""}`}
         >
           <Link href={link.route}>{link.label}</Link>
         </li>
