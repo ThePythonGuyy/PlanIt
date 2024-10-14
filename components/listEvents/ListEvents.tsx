@@ -81,7 +81,7 @@ export default function ListEvents() {
 
   useEffect(() => {
     fetchEvents(searchText, category, page);
-  }, [searchText, category, page, searchParams]);
+  }, [searchText, category, page, searchParams, router]);
   if (isLoading) {
     return (
       <div className={styles.loading}>

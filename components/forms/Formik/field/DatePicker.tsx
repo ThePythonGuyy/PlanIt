@@ -1,5 +1,3 @@
-
-
 import { ErrorMessage, Field, FieldInputProps, FormikProps } from "formik";
 import React from "react";
 import DateView, { DatePickerProps } from "react-datepicker";
@@ -33,9 +31,12 @@ const ChakraInput = React.forwardRef<HTMLInputElement, ChakraInputProps>(
   )
 );
 
-function DatePicker(props: dataPickerProps) {
+// Set the display name for ChakraInput
+ChakraInput.displayName = "ChakraInput";
 
-  const { name, label, fieldStyle, placeholder,icon, iconSize, ...rest } = props;
+function DatePicker(props: dataPickerProps) {
+  const { name, label, fieldStyle, placeholder, icon, iconSize, ...rest } = props;
+
   return (
     <Field name={name}>
       {({
@@ -53,13 +54,15 @@ function DatePicker(props: dataPickerProps) {
             isInvalid={!!form.errors[name] && !!form.touched[name]}
             className={fieldStyle}
           >
-            {icon &&   <Image
-              src={icon}
-              alt={name}
-              width={iconSize}
-              height={iconSize}
-            />}
-          
+            {icon && (
+              <Image
+                src={icon}
+                alt={name}
+                width={iconSize}
+                height={iconSize}
+              />
+            )}
+
             <p>{placeholder}</p>
             <DateView
               id={name}
@@ -70,7 +73,7 @@ function DatePicker(props: dataPickerProps) {
               onChange={(val) => setFieldValue(name, val)}
               showTimeSelect
               timeInputLabel="Time:"
-              dateFormat="dd/MM/yyy h:mm aa"
+              dateFormat="dd/MM/yyyy h:mm aa"
               wrapperClassName=".datePickerCustom"
               customInput={<ChakraInput width="100%" />}
             />
@@ -82,7 +85,6 @@ function DatePicker(props: dataPickerProps) {
       }}
     </Field>
   );
-  // <ErrorMessage name={name} component={TextError} />
 }
 
 export default DatePicker;
