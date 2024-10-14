@@ -3,11 +3,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "./categorySelect.module.scss";
 import { Form, Formik } from "formik";
-import { initialize } from "next/dist/server/lib/render-server";
 import FormikControl from "../forms/Formik/FormikControl";
-import { string } from "zod";
 import { useSearchParams, useRouter } from "next/navigation";
-
 import { formUrlQuery, removeKeysFromQuery } from "@/lib/utils";
 
 type CategorySelectProps = {
@@ -16,11 +13,9 @@ type CategorySelectProps = {
     value: string;
   }[];
 };
+
 export default function CategorySelect({ categoryList }: CategorySelectProps) {
-  const [category, setCategory] = useState<string>('');
-  const initialValues = {
-    category: "",
-  };
+  const [category, setCategory] = useState<string>("");
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -41,35 +36,31 @@ export default function CategorySelect({ categoryList }: CategorySelectProps) {
       }
       router.push(newUrl, { scroll: false });
     }, 500);
-    console.log(newUrl);
+
     return () => clearTimeout(delayDebounce);
-  },[category, router, searchParams])
+  }, [category, searchParams, router]);
+
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={{ category: "" }}
       onSubmit={(values) => {
         console.log(values); // Log form values on submit
       }}
     >
-      {({ values }) => {
-        useEffect(() => {
-         setCategory(values.category)
-        }, [values.category]);
-
-        return (
-          <Form className={styles.form}>
-            <FormikControl
-              control="select"
-              name="category"
-              placeholder="Category"
-              variant="filled"
-              fieldStyle={styles.selectField}
-              focusBorderColor="gray.400"
-              dropDownOptions={categoryList}
-            />
-          </Form>
-        );
-      }}
+      {({ values }) => (
+        <Form className={styles.form}>
+          <FormikControl
+            control="select"
+            name="category"
+            placeholder="Category"
+            variant="filled"
+            fieldStyle={styles.selectField}
+            focusBorderColor="gray.400"
+            dropDownOptions={categoryList}
+            setSelectValue={setCategory}
+          />
+        </Form>
+      )}
     </Formik>
   );
 }

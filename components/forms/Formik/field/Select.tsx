@@ -17,11 +17,12 @@ interface SelectProps {
   variant?: string;
   focusBorderColor?: string;
   dropDownOptions?: SelectOption[];
+  setSelectValue?: React.Dispatch<React.SetStateAction<string>>;
   addCategory?:() => void;
 }
 
 const CustomSelect = (props: SelectProps) => {
-  const { name, label, dropDownOptions, fieldStyle, addCategory, ...rest } = props;
+  const { name, label, dropDownOptions, fieldStyle, addCategory,setSelectValue, ...rest } = props;
   // console.log(dropDownOptions);
   return (
     <Field name={name}>
@@ -33,6 +34,9 @@ const CustomSelect = (props: SelectProps) => {
         form: FormikProps<any>;
       }) => {
         const handleChange = (option: any) => {
+          if(setSelectValue){
+            setSelectValue(option.value)
+          }
           form.setFieldValue(name, option ? option.value : "");
           // console.log("selected", option);
           if(option.value === "edit317" && addCategory)
