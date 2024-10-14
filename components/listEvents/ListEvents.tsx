@@ -57,7 +57,7 @@ export default function ListEvents() {
       value: "1",
     });
     router.push(newUrl, { scroll: false });
-  }, [searchText, category]);
+  }, [searchText, category, router, searchParams]);
 
   const fetchEvents = async (query: string, category: string, page: number) => {
     try {

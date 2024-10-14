@@ -37,7 +37,7 @@ export default function Search() {
     }, 500);
 
     return () => clearTimeout(delayDebounce);
-  }, [searchText]); // Only depend on searchText
+  }, [searchText, searchParams, router]); // Only depend on searchText
 
   return (
     <Formik
