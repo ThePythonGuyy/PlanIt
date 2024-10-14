@@ -12,7 +12,8 @@ import { Spinner } from "@chakra-ui/react";
 import Search from "../search/Search";
 import CategorySelect from "../categorySelect/CategorySelect";
 import { SearchParamProps } from "@/types";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { formUrlQuery } from "@/lib/utils";
 
 interface Option {
   label: string;
@@ -22,16 +23,15 @@ interface Option {
 export default function ListEvents() {
   const searchParams = useSearchParams();
   const [categoryList, setCategoryList] = useState<Option[]>([]);
-  const [events, setEvents] = useState<IEvent[]>([])
+  const [events, setEvents] = useState<IEvent[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [totalPages, setTotalPages] = useState<number>()
+  const [totalPages, setTotalPages] = useState<number>();
 
-  const page = Number(searchParams.get('page')) || 1;
-  const searchText = searchParams.get('eventTitle') || '';
-  const category = searchParams.get('category') || '';
-console.log(page, 'pageeee')
+  const page = Number(searchParams.get("page")) || 1;
+  const searchText = searchParams.get("eventTitle") || "";
+  const category = searchParams.get("category") || "";
 
-
+  const router = useRouter();
 
   const onSubmit = (values: { search: string; category: string }) => {
     console.log(values);
@@ -45,12 +45,19 @@ console.log(page, 'pageeee')
         value: item.name,
       }));
 
-      setCategoryList([{label: 'All', value: ''} ,...transformedData]);
-
-  
+      setCategoryList([{ label: "All", value: "" }, ...transformedData]);
     };
     getCategories();
   }, []);
+
+  useEffect(() => {
+    const newUrl = formUrlQuery({
+      params: searchParams.toString(),
+      key: "page",
+      value: "1",
+    });
+    router.push(newUrl, { scroll: false });
+  }, [searchText, category]);
 
   const fetchEvents = async (query: string, category: string, page: number) => {
     try {
@@ -60,21 +67,20 @@ console.log(page, 'pageeee')
         page,
         limit: 6,
       });
- 
+
       if (eventList?.data) {
         setEvents(eventList.data);
         setTotalPages(eventList?.totalPages);
       }
     } catch (error) {
       console.error("Failed to fetch events:", error);
-    } finally{
-      setIsLoading(false)
+    } finally {
+      setIsLoading(false);
     }
   };
 
   useEffect(() => {
- 
-    fetchEvents(searchText, category, page );
+    fetchEvents(searchText, category, page);
   }, [searchText, category, page, searchParams]);
   if (isLoading) {
     return (
@@ -92,8 +98,8 @@ console.log(page, 'pageeee')
   return (
     <div className={styles.eventList}>
       <div className={styles.filter}>
-       <Search />
-       <CategorySelect categoryList={categoryList} />
+        <Search />
+        <CategorySelect categoryList={categoryList} />
       </div>
       <div className={styles.collection}>
         <Collection
@@ -109,4 +115,4 @@ console.log(page, 'pageeee')
       </div>
     </div>
   );
-} 
+}
