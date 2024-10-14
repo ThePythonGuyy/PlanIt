@@ -23,6 +23,7 @@ export default async function RelatedEvents({eventId, categoryId} : RelatedEvent
     <div className={styles.eventsWrapper}>
       { eventList && 
           <Collection
+          urlParamName='relatedEvent'
           data={eventList.data}
           emptyTitle={"No Events Found"}
           emptyStateSubText={"Come back later"}
