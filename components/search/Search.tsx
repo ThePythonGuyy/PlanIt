@@ -47,9 +47,7 @@ export default function Search() {
       }}
     >
       {({ values }) => {
-        useEffect(() => {
-          setSearchText(values.searchText);
-        }, [values.searchText]);
+      
 
         return (
           <Form className={styles.form}>
@@ -63,6 +61,7 @@ export default function Search() {
               focusBorderColor="gray.400"
               icon="/assets/icons/search.svg"
               iconSize={20}
+              setInputValue={setSearchText}
             />
           </Form>
         );

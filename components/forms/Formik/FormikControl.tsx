@@ -39,6 +39,7 @@ interface FormikControlProps {
   iconSize?: number;
   setImage?: React.Dispatch<React.SetStateAction<File | null>>;
   setSelectValue?: React.Dispatch<React.SetStateAction<string>>;
+  setInputValue?: React.Dispatch<React.SetStateAction<string>>;
   addCategory?:() => void;
   currentImage?: string | null;
   
