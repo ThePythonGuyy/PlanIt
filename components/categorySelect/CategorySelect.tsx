@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./categorySelect.module.scss";
 import { Form, Formik } from "formik";
 import { initialize } from "next/dist/server/lib/render-server";
@@ -17,11 +17,33 @@ type CategorySelectProps = {
   }[];
 };
 export default function CategorySelect({ categoryList }: CategorySelectProps) {
+  const [category, setCategory] = useState<string>('');
   const initialValues = {
     category: "",
   };
   const searchParams = useSearchParams();
   const router = useRouter();
+
+  useEffect(() => {
+    let newUrl = "";
+    const delayDebounce = setTimeout(() => {
+      if (category) {
+        newUrl = formUrlQuery({
+          params: searchParams.toString(),
+          key: "category",
+          value: category.toString(),
+        });
+      } else {
+        newUrl = removeKeysFromQuery({
+          params: searchParams.toString(),
+          keysToRemove: ["category"],
+        });
+      }
+      router.push(newUrl, { scroll: false });
+    }, 500);
+    console.log(newUrl);
+    return () => clearTimeout(delayDebounce);
+  },[category, router, searchParams])
   return (
     <Formik
       initialValues={initialValues}
@@ -31,25 +53,8 @@ export default function CategorySelect({ categoryList }: CategorySelectProps) {
     >
       {({ values }) => {
         useEffect(() => {
-          let newUrl = "";
-          const delayDebounce = setTimeout(() => {
-            if (values.category) {
-              newUrl = formUrlQuery({
-                params: searchParams.toString(),
-                key: "category",
-                value: values.category.toString(),
-              });
-            } else {
-              newUrl = removeKeysFromQuery({
-                params: searchParams.toString(),
-                keysToRemove: ["category"],
-              });
-            }
-            router.push(newUrl, { scroll: false });
-          }, 500);
-          console.log(newUrl);
-          return () => clearTimeout(delayDebounce);
-        }, [values.category, router, searchParams]);
+         setCategory(values.category)
+        }, [values.category]);
 
         return (
           <Form className={styles.form}>
