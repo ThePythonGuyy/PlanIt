@@ -1,7 +1,7 @@
 'use server'
 
 import { CreateUserParams, UpdateUserParams } from "@/types"
-import { handleError } from "../utils"
+import { handleError, splitName } from "../utils"
 import { connectToDatabase } from "../database"
 import User from "../database/models/user.model"
 import Event from "../database/models/event.model"
@@ -13,7 +13,12 @@ export const createUser = async (user: CreateUserParams) => {
     try {
 
         await connectToDatabase();
-
+        
+      if (user.lastName === ''){
+        let name = splitName(user.firstName)
+        user.firstName = name.firstName
+        user.lastName = name.lastName
+      }
         const newUser = await User.create(user);
 
         console.log('User Created');
@@ -25,31 +30,31 @@ export const createUser = async (user: CreateUserParams) => {
     }
 }
 
-export async function getUserById(userId: string) {
-    try {
-      await connectToDatabase()
+// export async function getUserById(userId: string) {
+//     try {
+//       await connectToDatabase()
   
-      const user = await User.findById(userId)
+//       const user = await User.findById(userId)
   
-      if (!user) throw new Error('User not found')
-      return JSON.parse(JSON.stringify(user))
-    } catch (error) {
-      handleError(error)
-    }
-  }
+//       if (!user) throw new Error('User not found')
+//       return JSON.parse(JSON.stringify(user))
+//     } catch (error) {
+//       handleError(error)
+//     }
+//   }
   
-  export async function updateUser(clerkId: string, user: UpdateUserParams) {
-    try {
-      await connectToDatabase()
+//   export async function updateUser(clerkId: string, user: UpdateUserParams) {
+//     try {
+//       await connectToDatabase()
   
-      const updatedUser = await User.findOneAndUpdate({ clerkId }, user, { new: true })
+//       const updatedUser = await User.findOneAndUpdate({ clerkId }, user, { new: true })
   
-      if (!updatedUser) throw new Error('User update failed')
-      return JSON.parse(JSON.stringify(updatedUser))
-    } catch (error) {
-      handleError(error)
-    }
-  }
+//       if (!updatedUser) throw new Error('User update failed')
+//       return JSON.parse(JSON.stringify(updatedUser))
+//     } catch (error) {
+//       handleError(error)
+//     }
+//   }
   
   export async function deleteUser(clerkId: string) {
     try {

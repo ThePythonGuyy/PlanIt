@@ -1,0 +1,215 @@
+@use "../../../../styles/index" as *;
+
+.container {
+  width: 100%;
+  @include global-pad;
+  display: flex;
+  height: 84vh;
+}
+
+.editEvent{
+
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  background-color: #fefefe;
+  border-radius: 10px;
+  z-index: 5;
+    >a {
+        width: 100%;
+        height:100%;
+    }
+ 
+}
+
+
+.eventDetails {
+  background-color: $light-blue;
+  width: 100%;
+  margin: 0 auto;
+  height: 75vh;
+  border-radius: 15px;
+  padding: 4vh 0.5vw;
+  position: relative;
+
+  @include flex-row($jc: space-between);
+}
+
+.mainDetails {
+  width: 50%;
+  height: 100%;
+  @include flex-col($jc: space-between);
+  padding: 0vh 0.5vw;
+}
+
+.mainSubDetails {
+  width: 100%;
+  height: 30%;
+  border-radius: 15px;
+  @include flex-col($algn: flex-start, $jc: flex-end);
+  gap: 3.5vh;
+}
+
+.priceNameWrapper {
+  width: 100%;
+  @include flex-row($jc: flex);
+}
+
+.nameAndUsername {
+  flex: 1;
+  color: gray;
+  text-align: left;
+  padding-left: 0.5vw;
+  @include flex-row($jc: flex-start);
+  gap: 6px;
+  > p:nth-of-type(n) {
+    @include base-semibold;
+  }
+  > p:nth-of-type(1) {
+    color: $violet-1;
+  }
+  > p:nth-of-type(4) {
+    @include small-semibold;
+  }
+}
+
+.priceAndCategory {
+  flex: 1;
+  @include flex-row($jc: flex-start);
+  gap: 1rem;
+  height: 15%;
+  > p:nth-of-type(1) {
+    @include base-semibold;
+    color: $violet-1;
+    span {
+      color: #05b431;
+      @include base-regular;
+      background-color: #2dc6533b;
+      padding: 0.4rem 0.6rem;
+      border-radius: 800px;
+    }
+  }
+
+  > p:nth-of-type(2) {
+    @include base-semibold;
+    color: $violet-1;
+    > span {
+      color: #535a61;
+      @include base-regular;
+      background-color: #adb5bd25;
+      padding: 0.4rem 0.6rem;
+      border-radius: 800px;
+    }
+  }
+}
+
+.posterContainer {
+  position: relative;
+  width: 100%;
+  height: 67%;
+  border: 2px solid white;
+
+  > img {
+    width: 100%;
+    transform: scale(80%);
+    position: relative;
+    z-index: 3;
+  }
+}
+
+.posterImg {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(5px);
+}
+
+.addDetails {
+  width: 50%;
+  height: 100%;
+  // padding: 2vh 0.5vw;
+  // background-color: yellow;
+  @include flex-col($jc: flex-start);
+
+  > h2 {
+    @include heading2-bold;
+    width: 100%;
+    text-align: center;
+    color: #624bf5dd !important;
+    letter-spacing: 1.5px;
+  }
+
+  > p {
+    width: 80%;
+    text-align: justify;
+    @include base-medium;
+    margin: 8vh 0;
+  }
+}
+
+.details {
+  width: 50%;
+}
+
+.dates {
+  width: 100%;
+
+  @include flex-row($jc: flex-start);
+
+  @include base-medium;
+  color: gray;
+  > p {
+    flex: 1;
+    text-transform: capitalize;
+    vertical-align: baseline;
+    gap: 5px;
+    @include small-regular;
+    @include flex-row($jc: flex-start);
+  }
+  img {
+    margin-bottom: 4px;
+  }
+
+  span {
+    color: $violet-1;
+    @include small-semibold;
+  }
+}
+
+.locationAndUrl {
+  width: 100%;
+
+  > p, a {
+    @include flex-row($jc: flex-start);
+    @include small-semibold;
+    color: $violet-1;
+    gap: 5px;
+  }
+  >a{
+    span{
+        padding-bottom: 1.5px;
+      border-bottom: 0.5px solid $violet-1;
+    }
+  }
+}
+
+.btn {
+    margin: 0 auto;
+    margin-top: auto;
+ 
+    width: 80%;
+    >form {
+      @include flex-row;
+      gap: 1rem;
+      width: 100%;
+    >button {
+        flex:1;
+    }
+  }
+}
+

@@ -50,3 +50,85 @@ ul {
   list-style: none;
   list-style-type: none;
 }
+.react-datepicker{
+  width: 100% !important;
+}
+
+.react-datepicker-wrapper{
+  width: 100% !important;
+}
+.react-datepicker__input-container input {
+  background-color: #EDF2F7;
+  width: 100% !important;
+  // position: absolute !important;
+  // inset: 0;
+  
+}
+.react-datepicker-popper {
+  z-index: 2000 !important; 
+}
+
+
+.react-datepicker__day--selected {
+  background-color: #624cf5 !important;
+  color: #ffffff !important;
+  border-radius: 4px;
+}
+
+.react-datepicker__time-list-item--selected {
+  background-color: #624cf5 !important;
+}
+
+.datePickerCustom{
+  width: 100% !important;
+}
+
+.formik-control {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+
+
+
+
+/* Basic reset for the select element */
+.styled-select {
+  appearance: none; /* Remove default styling in most browsers */
+  -webkit-appearance: none; /* Remove default styling in WebKit browsers */
+  -moz-appearance: none; /* Remove default styling in Firefox */
+  border: 1px solid #ccc; /* Border color */
+  border-radius: 4px; /* Rounded corners */
+  padding: 10px; /* Padding inside the select */
+  font-size: 16px; /* Font size */
+  background-color: #fff; /* Background color */
+  color: #333 !important; /* Text color */
+  outline: none; /* Remove default outline */
+  width: 100%; /* Full width */
+  box-sizing: border-box; /* Include border and padding in width */
+}
+
+/* Add a custom arrow */
+.styled-select::after {
+  content: '▼'; /* Custom arrow */
+  font-size: 14px;
+  color: #333 !important;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Positioning of the select container */
+.container {
+  position: relative;
+  width: 200px; /* Adjust as needed */
+  margin: 20px;
+}
+
+/* Hide default arrow for better styling */
+.styled-select::-ms-expand {
+  display: none;
+}

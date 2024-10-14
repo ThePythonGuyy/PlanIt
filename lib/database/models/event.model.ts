@@ -12,17 +12,17 @@ export interface IEvent extends Document {
     price?: string;
     url?: string;
     category?: {_id: string, name: string}; 
-    organizer?: {_id: string, firstName: string, lastName: string}; 
+    organizer?: {_id: string, firstName: string, lastName: string, username: string}; 
 }
 
 const EventSchema = new Schema({
   title: { type: String, required: true },
-  description: { type: String },
+  description: { type: String, required: true },
   location: { type: String },
   createdAt: { type: Date, default: Date.now },
   imageUrl: { type: String, required: true },
-  startDateTime: { type: Date, default: Date.now },
-  endDateTime: { type: Date, default: Date.now },
+  startDateTime: { type: Date, default: Date.now, required: true },
+  endDateTime: { type: Date, default: Date.now, required: true },
   price: { type: String },
   url: { type: String },
   category: { type: Schema.Types.ObjectId, ref: "Category" },

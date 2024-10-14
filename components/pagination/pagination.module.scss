@@ -1,0 +1,9 @@
+@use '../../styles/index' as *;
+
+.container {
+    margin-top: 7vh;
+    @include flex-row;
+    gap: 1vw;
+
+    width: 100%;
+}

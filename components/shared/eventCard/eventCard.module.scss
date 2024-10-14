@@ -1,0 +1,122 @@
+@use "../../../styles/index" as *;
+
+.container{
+    position: relative;
+    height: 380px;
+    width: 320px;
+    @include flex-col($jc: flex-start);
+    border: 15px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 15px;
+    padding: 0.4rem 0.4rem;
+
+}
+
+
+.posterContainer {
+    position: relative;
+    width: 100%;
+    height: 50%;
+    
+
+    >img {
+        width: 100% ;
+        transform: scale(80%);
+        position: relative;
+        z-index: 3;
+    }
+}
+
+.posterImg {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: blur(5px);
+}
+
+.priceAndCategory {
+    padding: 0 1rem;
+    width: 100%;
+    @include flex-row($jc: flex-start);
+    gap: 1rem;
+    height: 15%;
+    // background-color: blue;
+    >p:nth-of-type(1){
+        color: #05b431;
+        @include base-regular;
+        background-color: #2dc6533b;
+        padding: 0.4rem 0.6rem;
+        border-radius: 800px;
+
+    }
+
+    >p:nth-of-type(2){
+        color: #adb5bd;
+        @include base-regular;
+        background-color: #adb5bd25;
+        padding: 0.4rem 0.6rem;
+        border-radius: 800px;
+    }
+}
+
+.date{
+    width: 100%;
+    text-align: left;
+    margin-top: 0.8rem;
+    padding: 0 1rem;
+    color: #535a61;
+    @include small-regular;
+}
+
+.title {
+   @include base-semibold;
+   width: 100%;
+   text-align: left;
+   margin-top: 1rem;
+   padding: 0 1rem;
+   margin-top: 10px;
+}
+
+.nameAndUsername {
+    margin: auto auto;
+    width: 100%;
+    color: gray;
+    text-align: left;
+   @include flex-row($jc: flex-start);
+   gap: 6px;
+    margin-top: 2rem;
+   padding: 0 1rem;
+   >p:nth-of-type(1){
+    @include base-semibold;
+    >p:nth-of-type(3){
+        @include small-semibold;
+    }
+   }
+   
+}
+
+.editEvent, .orderDetails{
+
+    width: 30px;
+    height: 30px;
+    >a {
+        width: 100%;
+        height:100%;
+    }
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background-color: #fefefe;
+    border-radius: 10px;
+    z-index: 5;
+   
+}
+
+.orderDetails {
+    top: 50px;
+ 
+}

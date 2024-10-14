@@ -3,20 +3,24 @@
 .container {
   @include flex-col($jc: space-between);
   width: 100%;
-  height: 100%;
+  height: auto;
+  background-color: #fefefe;
 }
 
 .main {
   flex: 1;
   width: 100%;
+  min-height: 84vh;
+  overflow-y: scroll;
+
 }
 
-// page
+
 
 .pageContainer {
   width: 100%;
-  height: 100%;
-  // background-color: pink;
+
+
 
   @include mid-break {
     height: 90vh;
@@ -26,7 +30,7 @@
 .hero {
   @include flex-row($jc: space-between);
   width: 100%;
-  height: 75%;
+  height: 60vh;
   position: relative;
   @include global-pad;
   background-color: $light-blue;
@@ -46,6 +50,8 @@
     // background-color: red;
     > h2 {
       @include heading1-bold;
+      letter-spacing: 1.5px;
+
     }
 
     > p {
@@ -95,5 +101,16 @@
   @include mid-break {
     width: 50% !important;
     margin: auto;
+  }
+}
+
+.eventList {
+  width: 100%;
+  @include flex-col();
+  @include global-pad;
+  >h2{
+    width:100%;
+    text-align: left;
+    @include heading3-bold;
   }
 }

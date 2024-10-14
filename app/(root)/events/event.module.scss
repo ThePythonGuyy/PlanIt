@@ -1,0 +1,21 @@
+@use '../../../styles/index' as *;
+
+
+
+.createEventContainer {
+    width: 100%;
+    background-color: $light-blue;
+}
+
+.createEventHead {
+    width: 100%;
+    @include global-pad;
+    text-align: center;
+    >h3 {
+        @include heading2-bold;
+    }
+} 
+
+.createEventForm {
+    @include global-pad;
+}

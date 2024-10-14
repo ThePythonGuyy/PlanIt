@@ -1,0 +1,23 @@
+@use '../../styles/index' as * ;
+
+.inputField {
+    width: 100%;
+    position: relative;
+  
+    input {
+      width: 100% !important;
+      margin: auto !important;
+      padding-left: 35px !important;
+    }
+  
+    img {
+      position: absolute;
+      top: 10px !important;
+      left: 2% !important;
+      z-index: 10 !important;
+    }
+  }
+
+  .form {
+    width: 100%;
+  }

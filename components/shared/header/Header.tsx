@@ -9,6 +9,7 @@ import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { Button, useDisclosure } from "@chakra-ui/react";
 import MobileNav from "./MobileNav";
 import NaveItems from "./NaveItems";
+import { longway } from "@/styles/font";
 
 export default function Header() {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -25,7 +26,7 @@ export default function Header() {
             alt="PlanIt logo"
           />
         </Link>
-        <h2 >Plan It</h2>
+        <h2 className={longway.className}>Plan It</h2>
       </div>
       <NaveItems />
       <div className={styles.auth}>

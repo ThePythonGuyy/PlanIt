@@ -1,0 +1,32 @@
+@use '../../../styles/index' as  *;
+
+.container {
+    width: 100%;
+    @include flex-col($jc: flex-start);
+}
+
+.myTickets , .eventOrganized {
+    width: 100%;
+    @include flex-col($jc: flex-start);
+}
+
+.head {
+    width: 100%;
+    @include flex-row($jc: space-between);
+    @include global-pad;
+    background-color: $light-blue;
+    >h3 {
+        @include heading3-bold;
+    }
+>a{
+    >button {
+        background-color: $violet-1;
+        color: #fefefe;
+        @include subtle-semibold;
+    }}
+}
+
+.events {
+    width: 100%;
+    @include global-pad;
+}

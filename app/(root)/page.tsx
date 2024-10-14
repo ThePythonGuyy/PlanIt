@@ -1,13 +1,18 @@
 import { Button } from "@chakra-ui/react";
 import styles from "./root.module.scss";
 import Image from "next/image";
+import { longway, revans } from "@/styles/font";
+import { Form, Formik } from "formik";
+import FormikControl from "@/components/forms/Formik/FormikControl";
+import ListEvents from "@/components/listEvents/ListEvents";
 
 export default function Home() {
+
   return (
     <section className={styles.pageContainer}>
       <div className={styles.hero}>
         <div>
-          <h2>
+          <h2 className={revans.className}>
             Host, Connect, <br /> Celebrate: Your Events,
             <br /> In Our Platform
           </h2>
@@ -21,6 +26,10 @@ export default function Home() {
           <Image src="/assets/images/hero.png" alt="Hero image" objectFit="cotain" layout="fill" className={styles.heroImg}/>
       
         </div>
+      </div>
+      <div className={styles.eventList}>
+        <h2>Trusted by Thousands of Events</h2>
+        <ListEvents/>
       </div>
     </section>
   );

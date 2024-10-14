@@ -17,6 +17,7 @@ export const headerLinks = [
     title: '',
     description: '',
     location: '',
+    isOnline: false,
     imageUrl: '',
     startDateTime: new Date(),
     endDateTime: new Date(),

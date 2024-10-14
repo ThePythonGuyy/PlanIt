@@ -2,7 +2,7 @@
 
 .header {
     width: 100%;
-    height: 10%;
+    height: 8vh;
     @include flex-row($jc: space-between);
     @include global-pad;
 
@@ -12,14 +12,17 @@
     width: fit-content;
     @include flex-row;
     gap: 1rem;
-    @include heading2-semibold;
+    @include heading1-semibold;
     font-weight: 600 !important;
-  
+    >h2{
+        margin-bottom: 1vh;
+    }
+   
 }
 
 .button {
-    background-color: rgb(98,75,245) !important;
-    color: rgba(255, 255, 255, 0.808) !important;
+    background-color: $violet-1 !important;
+    color: white !important;
 }
 
 
